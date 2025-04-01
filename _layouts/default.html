@@ -66,17 +66,21 @@
     </script>
 
     <style>
+        body {
+            background-color: #f5f5dc;
+            color: #333;
+        }
         body.dark-theme {
             background-color: #333;
-            color: white;
+            color: #f5f5dc;
         }
         /* Barra di navigazione */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background-color: #222;
+            padding: 15px;
+            background-color: #444;
         }
 
         .navbar-links {
@@ -92,7 +96,7 @@
 
         .navbar-links li a {
             text-decoration: none;
-            color: white;
+            color: #f5f5dc;
             font-weight: bold;
             transition: color 0.3s, background-color 0.3s;
             padding: 8px 12px;
@@ -108,15 +112,19 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            height: 40px;
         }
 
         .navbar-buttons button {
-            background-color: #444;
-            color: white;
+            background-color: #333;
+            color: #f5f5dc;
             border: none;
             padding: 10px;
             cursor: pointer;
-            border-radius: 5px
+            border-radius: 5px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
         }
 
         .navbar-buttons button:hover {
@@ -135,7 +143,7 @@
         }
 
         .navbar-links li a {
-            color: white;
+            color: #f5f5dc;
         }
     </style>
 </body>
