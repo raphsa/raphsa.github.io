@@ -4,6 +4,11 @@ title: About
 lang: it
 permalink: /it/about/
 ---
+<img src="/images/ProfilePic.JPG" 
+     alt="Foto profilo" 
+     width="150"
+     height="150" 
+     style="border-radius: 50%; float: left; margin-right: 25px; border: 5px solid currentColor; margin-bottom: 20px">
 
 Raffaele Sali è uno studente del Master of Artificial Intelligence presso l'Università di Bologna. 
 
