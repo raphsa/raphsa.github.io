@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
 <body>
-    <nav>
-        <ul>
+    <nav class="navbar">
+        <ul class="navbar-links">
             {% assign lang = page.lang | default: 'it' %}
             {% for item in site.navigation[lang] %}
                 <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
             {% endfor %}
         </ul>
+        <div class="navbar-buttons">
+            <button id="theme-toggle">🌞/🌙</button>
+            <button id="language-toggle">
+                <img id="language-icon" src="/images/flagUK.svg" alt="Bandiera Inglese" width="20">
+            </button>
+        </div>
     </nav>
-
-    <button id="theme-toggle">🌞/🌙</button>
-    <button id="language-toggle">🇮🇹 / 🇬🇧</button>
 
     <main>
         {{ content }}
@@ -33,23 +37,105 @@
             document.body.classList.add('dark-theme');
         }
 
-        // Cambio lingua
-        document.getElementById('language-toggle').addEventListener('click', () => {
-            const currentLang = window.location.pathname.includes('/en/') ? 'en' : 'it';
-            const newLang = currentLang === 'it' ? 'en' : 'it';
-            const newPath = window.location.pathname.replace(`/${currentLang}/`, `/${newLang}/`);
-            window.location.href = newPath;
+        // Cambio lingua con bandiera dinamica
+        document.addEventListener("DOMContentLoaded", function () {
+            const languageToggle = document.getElementById("language-toggle");
+            const languageIcon = document.getElementById("language-icon");
+
+        // Controlla la lingua attuale basandosi sull'URL
+            let currentLang = window.location.pathname.includes("/en/") ? "en" : "it";
+
+        // Imposta la bandiera iniziale
+            languageIcon.src = currentLang === "it" ? "/images/flagUK.svg" : "/images/flagIT.svg";
+            languageIcon.alt = currentLang === "it" ? "Bandiera Inglese" : "Bandiera Italiana";
+
+        // Cambia lingua quando il pulsante viene cliccato
+            languageToggle.addEventListener("click", function () {
+                let newLang = currentLang === "it" ? "en" : "it";
+                let newPath = window.location.pathname.replace(`/${currentLang}/`, `/${newLang}/`);
+
+            // Se l'URL non contiene già la lingua, aggiungila
+                if (!window.location.pathname.includes("/it/") && !window.location.pathname.includes("/en/")) {
+                    newPath = `/${newLang}/` + window.location.pathname;
+                }
+
+            // Reindirizza alla nuova versione linguistica
+                window.location.href = newPath;
+            });
         });
     </script>
 
     <style>
         body.dark-theme {
-            background-color: #222;
+            background-color: #333;
             color: white;
         }
-        button {
-            margin: 10px;
-            padding: 5px;
+        /* Barra di navigazione */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #222;
+        }
+
+        .navbar-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar-links li {
+            margin-right: 20px;
+        }
+
+        .navbar-links li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s, background-color 0.3s;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .navbar-links li a:hover {
+            background-color: #555;
+            color: #d63030; 
+        }
+
+        .navbar-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .navbar-buttons button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px
+        }
+
+        .navbar-buttons button:hover {
+            background-color: #555;
+        }
+
+        /* Layout per la sezione delle pagine */
+        main {
+            padding: 20px;
+        }
+
+        /* Layout Flex per le sezioni Home, Courses, About */
+        .navbar-links li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .navbar-links li a {
+            color: white;
         }
     </style>
 </body>

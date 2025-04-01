@@ -40,7 +40,7 @@ navigation:
   it:
     - title: Home
       url: /it/
-    - title: Courses
+    - title: Corsi
       url: /it/courses/
     - title: About
       url: /it/about/
