@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ site.title }}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            {% for item in site.navigation %}
+                <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <button id="theme-toggle">🌞/🌙</button>
+    <button id="language-toggle">🇮🇹 / 🇬🇧</button>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <script>
+        // Tema scuro/chiaro
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        // Cambio lingua
+        document.getElementById('language-toggle').addEventListener('click', () => {
+            const currentLang = window.location.pathname.includes('/en/') ? 'en' : 'it';
+            const newLang = currentLang === 'it' ? 'en' : 'it';
+            const newPath = window.location.pathname.replace(`/${currentLang}/`, `/${newLang}/`);
+            window.location.href = newPath;
+        });
+    </script>
+
+    <style>
+        body.dark-theme {
+            background-color: #222;
+            color: white;
+        }
+        button {
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+</body>
+</html>
