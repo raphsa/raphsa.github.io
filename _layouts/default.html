@@ -71,6 +71,10 @@
                 window.location.href = newPath;
             });
         });
+
+        document.getElementById('profileImage').addEventListener('click', function() {
+            location.reload(); // Ricarica la pagina
+        });
     </script>
 
     <style>
@@ -131,6 +135,10 @@
             color: #222832;
         }
 
+        body:not(.dark-theme) .navbar-links li a:hover {
+            color: #9c5ffd;
+        }
+
         .navbar-links li a:hover {
             color: #9c5ffd; 
         }
@@ -170,9 +178,86 @@
             margin-right: 20px;
         }
 
-        .navbar-links li a {
-            color: #E0E0E0;
+       /* Container centrale */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
         }
+
+        /* Stile per la foto del profilo */
+        .profile-image-container {
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid currentColor;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Effetto al passaggio del mouse: la foto si solleva */
+        .profile-image:hover {
+            transform: translateY(-10px); /* Si alza leggermente */
+        }
+
+        /* Animazione per il testo che appare */
+        .welcome-text h1, .welcome-text p {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        .welcome-text h1 {
+            animation-delay: 0.5s; /* Il titolo appare dopo mezzo secondo */
+        }
+
+        .welcome-text p {
+            animation-delay: 1s; /* Il paragrafo appare dopo 1 secondo */
+        }
+
+        /* Definizione dell'animazione */
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Icone social */
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            color: #333;
+            font-size: 30px;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #0077b5; /* Colore LinkedIn (modifica a tuo piacimento) */
+        }
+
+        /* Icona di GitHub */
+        .social-icon.github:hover {
+            color: #333; /* Colore GitHub */
+        }
+
+        /* Icona di LinkedIn */
+        .social-icon.linkedin:hover {
+            color: #0077b5; /* Colore LinkedIn */
+        }
+
     </style>
 </body>
 </html>

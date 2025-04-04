@@ -2,7 +2,7 @@
 layout: default
 title: Corsi
 lang: it
-permalink: /it/corsi
+permalink: /it/courses
 ---
 
 <style type="text/css" media="screen">
