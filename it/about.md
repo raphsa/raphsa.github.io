@@ -10,6 +10,8 @@ permalink: /it/about/
      height="150" 
      style="border-radius: 50%; float: left; margin-right: 25px; border: 5px solid currentColor; margin-bottom: 20px">
 
+# About
+
 Raffaele Sali è uno studente del Master of Artificial Intelligence presso l'Università di Bologna. 
 
 Ricopre il ruolo di tutor presso i seguenti insegnamenti:

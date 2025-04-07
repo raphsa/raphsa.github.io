@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>{{ site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>
+<body class="{% if page.title != 'Home' %}animate-page{% endif %}">
     <nav class="navbar">
         <ul class="navbar-links">
             {% assign lang = page.lang | default: 'it' %}
@@ -14,7 +15,12 @@
             {% endfor %}
         </ul>
         <div class="navbar-buttons">
-            <button id="theme-toggle">🌞/🌙</button>
+            <button id="theme-toggle" class="theme-toggle-btn">
+                <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <!-- Sun Icon -->
+                    <path id="sun-icon" d="M12 4V2m0 20v-2m8.49-7.47l1.41 1.41m-18.38 0l-1.41-1.41m15.56-5.5h2m-20 0h2m13.94 9.94l1.41 1.41m-16.72 0l-1.41-1.41M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+                </svg>
+            </button>
             <button id="language-toggle">
                 <img id="language-icon" src="/images/flagUK.svg" alt="Bandiera Inglese" width="20">
             </button>
@@ -26,54 +32,72 @@
     </main>
 
     <script>
-        // Tema scuro/chiaro
+        // Dark/Light theme
         const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+            // Icon changes according to theme
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.innerHTML = `
+                    <path id="moon-icon" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c3.76 0 7.04-2.26 8.62-5.53C18.74 16.37 15.2 14 12 14c-1.1 0-2.14-.24-3.07-.67C8.59 13.02 9.63 12 11 12c2.21 0 4-1.79 4-4s-1.79-4-4-4C10.34 4 9.22 5.21 9 6.5C9.15 5.72 10 5 11 5c1.35 0 2.5-1.14 2.5-2.5S12.35 0 11 0c-1.25 0-2.31.82-2.74 1.92C7.49 1.66 8 0 9 0c2.35 0 4.49 1.17 5.72 3.02C15.53 4.75 16 5.65 16 7c0 1.1-.91 2-2 2s-2-.9-2-2c0-.29.06-.57.17-.81-.5-.26-.83-.78-.83-1.39C11.85 5.58 12.41 4 14 4c.89 0 1.63-.66 1.79-1.54A9.98 9.98 0 0 0 12 2z"/>
+                `;
+            } else {
+                themeIcon.innerHTML = `
+                    <path id="sun-icon" d="M12 4V2m0 20v-2m8.49-7.47l1.41 1.41m-18.38 0l-1.41-1.41m15.56-5.5h2m-20 0h2m13.94 9.94l1.41 1.41m-16.72 0l-1.41-1.41M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+                `;
+            }
         });
 
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-theme');
+            themeIcon.innerHTML = `
+                <path id="moon-icon" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c3.76 0 7.04-2.26 8.62-5.53C18.74 16.37 15.2 14 12 14c-1.1 0-2.14-.24-3.07-.67C8.59 13.02 9.63 12 11 12c2.21 0 4-1.79 4-4s-1.79-4-4-4C10.34 4 9.22 5.21 9 6.5C9.15 5.72 10 5 11 5c1.35 0 2.5-1.14 2.5-2.5S12.35 0 11 0c-1.25 0-2.31.82-2.74 1.92C7.49 1.66 8 0 9 0c2.35 0 4.49 1.17 5.72 3.02C15.53 4.75 16 5.65 16 7c0 1.1-.91 2-2 2s-2-.9-2-2c0-.29.06-.57.17-.81-.5-.26-.83-.78-.83-1.39C11.85 5.58 12.41 4 14 4c.89 0 1.63-.66 1.79-1.54A9.98 9.98 0 0 0 12 2z"/>
+            `;
+        } else {
+            themeIcon.innerHTML = `
+                <path id="sun-icon" d="M12 4V2m0 20v-2m8.49-7.47l1.41 1.41m-18.38 0l-1.41-1.41m15.56-5.5h2m-20 0h2m13.94 9.94l1.41 1.41m-16.72 0l-1.41-1.41M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+            `;
         }
 
-        // Cambio lingua con bandiera dinamica
+        // Languages changes with dynamic flag
         document.addEventListener("DOMContentLoaded", function () {
             const languageToggle = document.getElementById("language-toggle");
             const languageIcon = document.getElementById("language-icon");
         
-        // Se l'utente è nella root ("/"), lo reindirizziamo alla lingua del browser
+        // Rendering to browser language if user on the root "/"
         if (window.location.pathname === "/") {
             const userLang = navigator.language || navigator.userLanguage;
             const defaultLang = userLang.startsWith("it") ? "it" : "en";
             window.location.href = `/${defaultLang}/`;
-            return; // Stoppa l'esecuzione dello script per evitare conflitti
+            return; // Script execution stopped to avoid conflicts
         }
 
-        // Controlla la lingua attuale basandosi sull'URL
+        // Checking initial language based on URL
             let currentLang = window.location.pathname.includes("/en/") ? "en" : "it";
 
-        // Imposta la bandiera iniziale
+        // Initial flag setting
             languageIcon.src = currentLang === "it" ? "/images/flagUK.svg" : "/images/flagIT.svg";
             languageIcon.alt = currentLang === "it" ? "Bandiera Inglese" : "Bandiera Italiana";
 
-        // Cambia lingua quando il pulsante viene cliccato
+        // Changing language command
             languageToggle.addEventListener("click", function () {
                 let newLang = currentLang === "it" ? "en" : "it";
                 let newPath = window.location.pathname.replace(`/${currentLang}/`, `/${newLang}/`);
 
-            // Se l'URL non contiene già la lingua, aggiungila
+            // Adding language to the URL if not already present
                 if (!window.location.pathname.includes("/it/") && !window.location.pathname.includes("/en/")) {
                     newPath = `/${newLang}/` + window.location.pathname;
                 }
 
-            // Reindirizza alla nuova versione linguistica
+            // Rendering to the new language version
                 window.location.href = newPath;
             });
         });
 
         document.getElementById('profileImage').addEventListener('click', function() {
-            location.reload(); // Ricarica la pagina
+            location.reload(); // Page reload
         });
     </script>
 
@@ -85,15 +109,14 @@
                    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
-        /* Se vuoi applicarlo anche ad altri elementi specifici */
         h1, h2, h3, p, a, span, button, input {
-            font-family: inherit; /* Usa il font ereditato da <body> */
+            font-family: inherit; /* Inherited from <body> */
         }
         body.dark-theme {
             background-color: #14181E;
             color: #E0E0E0;
         }
-        /* Barra di navigazione */
+        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -167,18 +190,18 @@
             background-color: #555;
         }
 
-        /* Layout per la sezione delle pagine */
+        /* Pages section layout */
         main {
             padding: 20px;
         }
 
-        /* Layout Flex per le sezioni Home, Courses, About */
+        /* Flex Layout for Home, Courses, About sections */
         .navbar-links li {
             display: inline-block;
             margin-right: 20px;
         }
 
-       /* Container centrale */
+       /* Central container */
         .container {
             display: flex;
             flex-direction: column;
@@ -188,7 +211,6 @@
             text-align: center;
         }
 
-        /* Stile per la foto del profilo */
         .profile-image-container {
             margin-bottom: 20px;
             transition: transform 0.3s ease;
@@ -203,12 +225,12 @@
             transition: transform 0.3s ease;
         }
 
-        /* Effetto al passaggio del mouse: la foto si solleva */
+        /* Photo movement when the cursor goes above */
         .profile-image:hover {
-            transform: translateY(-10px); /* Si alza leggermente */
+            transform: translateY(-10px);
         }
 
-        /* Animazione per il testo che appare */
+        /* Animation for the Homepage */
         .welcome-text h1, .welcome-text p {
             opacity: 0;
             transform: translateY(20px);
@@ -216,14 +238,21 @@
         }
 
         .welcome-text h1 {
-            animation-delay: 0.5s; /* Il titolo appare dopo mezzo secondo */
+            animation-delay: 0.5s;
         }
 
         .welcome-text p {
-            animation-delay: 1s; /* Il paragrafo appare dopo 1 secondo */
+            animation-delay: 1s;
         }
 
-        /* Definizione dell'animazione */
+        body.animate-page main > * {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Animation definition */
         @keyframes fadeIn {
           to {
             opacity: 1;
@@ -231,7 +260,7 @@
           }
         }
 
-        /* Icone social */
+        /* Social Icons */
         .social-icons {
             margin-top: 20px;
             display: flex;
@@ -239,23 +268,58 @@
         }
 
         .social-icon {
-            color: #333;
+            color: inherit;
             font-size: 30px;
             transition: color 0.3s;
         }
 
         .social-icon:hover {
-            color: #0077b5; /* Colore LinkedIn (modifica a tuo piacimento) */
+            color: #0077b5; /* LinkedIn color or similar */
         }
 
-        /* Icona di GitHub */
-        .social-icon.github:hover {
-            color: #333; /* Colore GitHub */
+        p a, li a {
+            color: inherit; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: color 0.3s;
         }
 
-        /* Icona di LinkedIn */
-        .social-icon.linkedin:hover {
-            color: #0077b5; /* Colore LinkedIn */
+        p a:hover, li a:hover {
+            color: #9c5ffd;
+            text-decoration: underline;
+        }
+
+        .theme-toggle-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border-radius: 50%;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle-btn svg {
+            width: 24px;
+            height: 24px;
+            transition: fill 0.3s;
+        }
+
+        /* Icon changes for Dark Theme */
+        body.dark-theme #theme-icon {
+            fill: #E0E0E0;
+        }
+
+        /* Icon changes for Light Theme */
+        body:not(.dark-theme) #theme-icon {
+            fill: #f39c12;
         }
 
     </style>
