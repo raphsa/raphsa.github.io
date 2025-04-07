@@ -331,8 +331,7 @@
         }
 
         .theme-toggle-btn:hover svg {
-            fill: #9c5ffd; 
-            text-decoration: underline; 
+            fill: #9c5ffd;  
         }
 
         body:not(.dark-theme) .theme-toggle-btn svg {
@@ -341,6 +340,18 @@
 
         body.dark-theme .theme-toggle-btn svg {
             fill: #E0E0E0; /* Colore del testo del tema scuro */
+        }
+
+        body:not(.dark-theme) .theme-toggle-btn:hover svg {
+            fill: #9c5ffd;
+        }
+
+        body.dark-theme .theme-toggle-btn:hover svg {
+            fill: #9c5ffd;
+        }
+
+        .theme-toggle-btn:hover #theme-icon {
+            fill: #9c5ffd !important;
         }
 
     </style>
