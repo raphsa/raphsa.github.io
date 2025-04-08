@@ -1,1 +1,1 @@
-This repository holds the GitHub page raphsa.github.io, which has been developed as my personal page where I upload the material used during exercises in the courses I cover the teaching assistant role and I post some other personal project or ideas.
+This repository holds the GitHub page raphsa.github.io, which has been developed as my personal page, where I upload the material used during exercises in the courses I'm tutoring and where I post some other personal project or ideas.
