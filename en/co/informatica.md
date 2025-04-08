@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Corsi
-lang: it
-permalink: /it/courses/
+title: Courses
+lang: en
+permalink: /en/courses/co/informatica
 ---
 
 <style type="text/css" media="screen">
@@ -19,8 +19,10 @@ permalink: /it/courses/
   }
 </style>
 
-## Corsi
 
-- [Informatica](co/informatica/)
-- [Big Data Applications](co/bigdata/)
-- [Applied Machine Learning - Advanced](co/appliedML/)
+<div class="container">
+  <h1>Work in progress</h1>
+
+  <p><strong>This page is currently under mantainance</strong></p>
+  <p>We are working on it.</p>
+</div>

@@ -2,8 +2,9 @@
 layout: default
 title: Corsi
 lang: it
-permalink: /it/courses/
+permalink: /it/courses/co/appliedML
 ---
+
 
 <style type="text/css" media="screen">
   .container {
@@ -19,8 +20,10 @@ permalink: /it/courses/
   }
 </style>
 
-## Corsi
 
-- [Informatica](co/informatica/)
-- [Big Data Applications](co/bigdata/)
-- [Applied Machine Learning - Advanced](co/appliedML/)
+<div class="container">
+  <h1>Lavori in corso</h1>
+
+  <p><strong>La pagina è in fase di manutenzione</strong></p>
+  <p>Ci stiamo lavorando.</p>
+</div>
