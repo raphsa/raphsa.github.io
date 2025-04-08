@@ -22,6 +22,6 @@ permalink: /en/courses/
 
 ## Courses
 
-- [Informatics](co/informatica/)
-- [Big Data Applications](co/bigdata/)
-- [Applied Machine Learning - Advanced](co/appliedML/)
+- [Informatics](/en/courses/co/informatica/)
+- [Big Data Applications](/en/courses/co/bigdata/)
+- [Applied Machine Learning - Advanced](/en/courses/co/appliedML/)
