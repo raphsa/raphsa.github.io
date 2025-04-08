@@ -112,10 +112,12 @@
         h1, h2, h3, p, a, span, button, input {
             font-family: inherit; /* Inherited from <body> */
         }
+
         body.dark-theme {
             background-color: #14181E;
             color: #E0E0E0;
         }
+
         /* Navigation Bar */
         nav {
             display: flex;
@@ -280,7 +282,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px;
+            padding: 5px;
             transition: background-color 0.3s, box-shadow 0.3s;
             border-radius: 50%;
         }
@@ -292,25 +294,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px;
+            padding: 5px;
             transition: background-color 0.3s, box-shadow 0.3s;
             border-radius: 50%;
         }
 
-        .theme-toggle-btn:hover {
+        body:not(.dark-theme) .theme-toggle-btn:hover {
             background-color: rgba(0, 0, 0, 0.1);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .language-toggle-btn:hover {
+        body:not(.dark-theme) .language-toggle-btn:hover {
             background-color: rgba(0, 0, 0, 0.1);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: #555;
+            box-shadow: 0 4px 8px #555;
+        }
+
+        .language-toggle-btn:hover {
+            background-color: #555;
+            box-shadow: 0 4px 8px #555;
         }
 
         .theme-toggle-btn svg {
             width: 24px;
             height: 24px;
-            fill: inherit;
             transition: fill 0.3s;
         }
 
@@ -328,26 +339,6 @@
         /* Icon changes for Light Theme */
         body:not(.dark-theme) #theme-icon {
             fill: #222832;
-        }
-
-        .theme-toggle-btn:hover svg {
-            fill: #9c5ffd;  
-        }
-
-        body:not(.dark-theme) .theme-toggle-btn svg {
-            fill: #222832; /* Colore del testo del tema chiaro */
-        }
-
-        body.dark-theme .theme-toggle-btn svg {
-            fill: #E0E0E0; /* Colore del testo del tema scuro */
-        }
-
-        body:not(.dark-theme) .theme-toggle-btn:hover svg {
-            fill: #9c5ffd;
-        }
-
-        body.dark-theme .theme-toggle-btn:hover svg {
-            fill: #9c5ffd;
         }
 
         .theme-toggle-btn:hover #theme-icon {
