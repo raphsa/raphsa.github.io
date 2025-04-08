@@ -21,6 +21,6 @@ permalink: /it/courses/
 
 ## Corsi
 
-- [Informatica](/it/corsi/co/informatica/)
-- [Big Data Applications](/it/corsi/co/bigdata/)
-- [Applied Machine Learning - Advanced](/it/corsi/co/appliedML/)
+- [Informatica](/it/courses/co/informatica/)
+- [Big Data Applications](/it/courses/co/bigdata/)
+- [Applied Machine Learning - Advanced](/it/courses/co/appliedML/)
