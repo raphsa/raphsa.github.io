@@ -8,7 +8,9 @@ permalink: /en/about/
      alt="Foto profilo" 
      width="150"
      height="150" 
-     style="border-radius: 50%; float: left; margin-right: 25px; border: 5px solid currentColor; margin-bottom: 20px">
+     style="border-radius: 50%; float: left; margin-right: 45px; border: 5px solid currentColor; margin-bottom: 15px">
+
+# About
 
 Raffaele Sali is a Master student of Artificial Intelligence at the University of Bologna. 
 
@@ -16,6 +18,7 @@ He fulfills the teaching assistant role in the following courses:
 - [**Applied Machine Learning advanced**](https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2024/504405), from the Department of Pharmacy and Biotechnology (FABIT), held by Professor **Bonacorsi Daniele**.
 - [**Big Data Applications**](https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2024/468888), from the Department of Economics, held by Professor **Barigozzi Matteo**.
 - [**Informatics**](https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2024/403307), from the Department of Statistical Sciences "Paolo Fortunati", held by Professor **Zingaro Stefano Pio** (italian taught course).
+- [**Econometrics**](https://www.unibo.it/en/study/course-units-transferable-skills-moocs/course-unit-catalogue/course-unit/2024/403286), from the Department of Statistical Sciences "Paolo Fortunati", held by Professor **Bottazzi Renata**.
 
 His interests ranges in the field of Reinforcement Learning for autonomous systems, Deep Learning, Image processing and Computer Vision for medical, environmental and automotive purposes.
 

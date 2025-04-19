@@ -2,7 +2,7 @@
 layout: default
 title: Courses
 lang: en
-permalink: /en/courses/
+permalink: /en/courses/co/econometrics
 ---
 
 <style type="text/css" media="screen">
@@ -20,9 +20,9 @@ permalink: /en/courses/
 </style>
 
 
-## Courses
+<div class="container">
+  <h1>Work in progress</h1>
 
-- [Informatics](/en/courses/co/informatica/)
-- [Big Data Applications](/en/courses/co/bigdata/)
-- [Applied Machine Learning - Advanced](/en/courses/co/appliedML/)
-- [Econometrics](/en/courses/co/econometrics/)
+  <p><strong>This page is currently under mantainance</strong></p>
+  <p>We are working on it.</p>
+</div>
