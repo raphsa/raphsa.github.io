@@ -23,7 +23,7 @@ email: raffaele.sali2@unibo.it
 description: >- # this means to ignore newlines until "baseurl:"
   Here you can find information and exercises about the courses I'm tutoring and more.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://raphsa.github.io"
 github_username:  raphsa
 social_links:
   linkedin: "https://www.linkedin.com/in/raffaelesali"
