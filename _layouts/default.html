@@ -22,7 +22,7 @@
                 </svg>
             </button>
             <button id="language-toggle" class="language-toggle-btn">
-                <img id="language-icon" src="{{ '/images/flag_UK.svg' | relative_url }}" alt="Bandiera Inglese" width="24">
+                <img id="language-icon" src="{{ '/images/Flag_UK.svg' | relative_url }}" alt="Bandiera Inglese" width="24">
             </button>
         </div>
     </nav>
@@ -78,7 +78,7 @@
             let currentLang = window.location.pathname.includes("/en/") ? "en" : "it";
 
         // Initial flag setting
-            languageIcon.src = currentLang === "it" ? "/images/flag_UK.svg" : "/images/flag_IT.svg";
+            languageIcon.src = currentLang === "it" ? "/images/Flag_UK.svg" : "/images/Flag_IT.svg";
             languageIcon.alt = currentLang === "it" ? "Bandiera Inglese" : "Bandiera Italiana";
 
         // Changing language command
