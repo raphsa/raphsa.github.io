@@ -6,9 +6,7 @@ permalink: /en/about/
 ---
 <img src="/images/ProfilePic.JPG" 
      alt="Foto profilo" 
-     width="150"
-     height="150" 
-     style="border-radius: 50%; float: left; margin-right: 45px; border: 5px solid currentColor; margin-bottom: 15px">
+     class="about-profile">
 
 # About
 
