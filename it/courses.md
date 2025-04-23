@@ -5,7 +5,7 @@ lang: it
 permalink: /it/courses/
 ---
 
-## Corsi
+# Corsi
 
 - [Informatica](/it/courses/co/informatica/)
 - [Big Data Applications](/it/courses/co/bigdata/)

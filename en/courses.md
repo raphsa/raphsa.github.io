@@ -5,7 +5,7 @@ lang: en
 permalink: /en/courses/
 ---
 
-## Courses
+# Courses
 
 - [Informatics](/en/courses/co/informatica/)
 - [Big Data Applications](/en/courses/co/bigdata/)
