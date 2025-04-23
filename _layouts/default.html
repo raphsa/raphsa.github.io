@@ -142,6 +142,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            gap: 20px;
         }
 
         .navbar-links li {
@@ -282,7 +283,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5px;
+            padding: 4px;
             transition: background-color 0.3s, box-shadow 0.3s;
             border-radius: 50%;
         }
@@ -344,6 +345,63 @@
 
         .theme-toggle-btn:hover #theme-icon {
             fill: #9c5ffd !important;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 30px;
+            }
+
+            .navbar-links {
+                width: 100%;
+                gap: 30px;
+                font-size: 1.6rem;
+            }
+
+            .theme-toggle-btn {
+                padding: 5px;
+            }
+
+            .language-toggle-btn {
+                padding: 8px;
+            }
+
+            .theme-toggle-btn svg {
+                width: 30px;
+                height: 30px;
+            }
+ 
+            .language-toggle-btn svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .navbar-links li {
+                margin: 10px 0;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            .container {
+                height: auto;
+                padding: 70px 10px;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .social-icons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .social-icon {
+                font-size: 24px;
+            }
         }
 
     </style>
