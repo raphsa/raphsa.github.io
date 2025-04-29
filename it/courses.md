@@ -7,7 +7,7 @@ permalink: /it/courses/
 
 # Corsi
 
-- [Informatica](/courses/informatica_CLASS/)
-- [Big Data Applications](/courses/BigDataApplications_EPOS/)
-- [Applied Machine Learning - Advanced](/courses/appliedML_BIOINFO/)
-- [Econometrics](/courses/econometrics_CLASS/)
+- [Informatica](/informatica_CLASS/)
+- [Big Data Applications](/BigDataApplications_EPOS/)
+- [Applied Machine Learning - Advanced](/appliedML_BIOINFO/)
+- [Econometrics](/econometrics_CLASS/)
