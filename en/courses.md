@@ -7,7 +7,7 @@ permalink: /en/courses/
 
 # Courses
 
-- [Informatics](/en/courses/co/informatica/)
-- [Big Data Applications](/en/courses/co/bigdata/)
-- [Applied Machine Learning - Advanced](/en/courses/co/appliedML/)
-- [Econometrics](/en/courses/co/econometrics/)
+- [Informatics](https://raphsa.github.io/Informatica_CLASS/)
+- [Big Data Applications](https://raphsa.github.io/BigDataApplications_EPOS/)
+- [Applied Machine Learning - Advanced](https://raphsa.github.io/AppliedML_BIOINFO/)
+- [Econometrics](https://raphsa.github.io/Econometrics_CLASS/)
