@@ -7,7 +7,8 @@ permalink: /it/courses/
 
 # Corsi
 
-- [Informatica - 07276 CLASS](https://raphsa.github.io/Informatica_CLASS/)
-- [Big Data Applications - 96357 EPOS](https://raphsa.github.io/BigDataApplications_EPOS/)
-- [Applied Machine Learning - B5779 BIOINFO](https://raphsa.github.io/AppliedML_BIOINFO/)
-- [Econometrics - 32626 CLASS](https://raphsa.github.io/Econometrics_CLASS/)
+
+- <a href="https://raphsa.github.io/Informatica_CLASS/" target="_blank" rel="noopener noreferrer">Informatica - 07276 CLASS</a>
+- <a href="https://raphsa.github.io/BigDataApplications_EPOS/" target="_blank" rel="noopener noreferrer">Big Data Applications - 96357 EPOS</a>
+- <a href="https://raphsa.github.io/AppliedML_BIOINFO/" target="_blank" rel="noopener noreferrer">Applied Machine Learning - B5779 BIOINFO</a>
+- <a href="https://raphsa.github.io/Econometrics_CLASS/" target="_blank" rel="noopener noreferrer">Econometrics - 32626 CLASS</a>
