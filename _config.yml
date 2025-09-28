@@ -36,6 +36,8 @@ languages:
   - it
   - en
 
+default_lang: en
+
 navigation:
   it:
     - title: Home
