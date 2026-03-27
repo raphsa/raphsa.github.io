@@ -1,0 +1,268 @@
+- id: coop-perc
+  title: "Cooperative Perception in Autonomous Vehicles"
+  description: "Developing an agent using the SCOPE dataset, based on RGB cameras, semantic segmentation cameras, LiDAR sensors and Roadside Units to study the impact of cooperative perception among Connected and Automated Vehicles, testing multiple scenarios in CARLA simulator."
+  status: wip
+  credits_url: "https://arxiv.org/pdf/2310.03525"
+  dataset_url: "https://ekut-es.github.io/scope/"
+  report_url: ""
+  repo_url: ""
+  tags:
+    - Python
+    - Computer Vision
+    - CARLA
+    - YOLO
+    - Multi-Agent Systems
+    - V2X communication
+    - Autonomous Driving
+    - Multi Modal Data Fusion
+    - Multi Object Detection
+    - Trajectory prediction
+
+- id: SpikingNN
+  title: "The power of Spiking Neural Networks in Autonomous Vehicles"
+  description: ""
+  status: wip
+  credits_url: "https://www.sciencedirect.com/science/article/pii/S0952197624015732"
+  dataset_url: ""
+  report_url: ""
+  repo_url: ""
+  tags:
+    - Python
+    - Computer Vision
+    - CARLA
+    - Spiking Neural Networks
+    - Autonomous Driving
+    - Multi Modal Data Fusion
+    - Multi Object Detection
+
+- id: NLP_LLM
+  title: "From PDF to Knowledge Graph for fine-tuning an LLM"
+  description: |
+    Final project for the NLP course @UniOulu. A complete NLP pipeline that transforms a domain-specific PDF into structured knowledge, generates instruction-response pairs, and fine-tunes a LLM based on that knowledge was built. 
+    The end goal was to evaluate whether LLM fine-tuning on grounded knowledge improves factual accuracy compared to retrieval-based (RAG) or zero-shot baselines.
+  status: done
+  report_url: "https://github.com/raphsa/pdf_to_KnowledgeGraph_LLM/blob/main/report/report.pdf"
+  repo_url: "https://github.com/raphsa/pdf_to_KnowledgeGraph_LLM"
+  tags:
+    - Python
+    - PyTorch
+    - NLP
+    - LLM
+    - Fine-tuning
+    - RAG
+    - Knowledge Graph
+    - LoRA
+    - Hugging Face
+    - Fuseki
+    - KeyBERT
+
+- id: ipcv_proj
+  title: "Books recognition on shelves & breeds of cats and dogs classification"
+  description: |
+    Final project for the Image Processing and Computer Vision course @UniBo consisting in two assignments: 
+    1) A Multi-Instance Object detection system has been developed to identiy books in shelves given a reference image for each book. Clahe was used for Preprocessing step, RootSIFT was chosen for detecting features, BF 5NN consecutive ratio test was applied for matching instances with an iterative detection with keypoint index exclusion to handle multiple copies efficiently. Similarity transform (with 4 DOF) has been used as geometric model.
+    2) First, a CNN trained from scratch on OxfordPetDataset has been implemented, based on the ResNet style, including Stem Layer, BatchNormalization, AdaptiveAveragePooling, Dropout. For training purposes AdamW, OneCycleLR with Cosine annealing, Cross-entropy loss with Label Smoothing and Gradient norm clipping were employed. For data augmentation purposes, MixUp was implemented. An ablation study has been developed to to evaluate the impact of each component in the network. Then, the ResNet-18 was fine tuned as a comparison, looking for the bes training hyperparameters.  
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: ""
+  repo_url: "https://github.com/raphsa/BooksDetection_PetClassification/tree/main"
+  tags:
+    - Python
+    - PyTorch
+    - Image Processing
+    - Computer Vision
+    - Multi-Instance Detection
+    - Transfer Learning
+    - Fine-tuning
+    - Clahe
+    - RootSIFT
+    - BF 5NN
+    - RANSAC
+    - ResNet
+    - EfficientNet
+    - LabelSmoothing
+    - MixUp
+    - AdamW
+    - OneCycleLR
+
+- id: DL_Proj_Oulu
+  title: "Multi-Label Retinal Disease Classification"
+  description: |
+    Implemented multiple multi-label retinal disease classification models exploiting transfer learning, ResNet18 and EfficientNet architectures under various fine-tuning strategies.
+    Retinal diseases such as Diabetic Retinopathy (DR), Glaucoma and Age-related Macular Degeneration (AMD) are leading causes of blindness. Datasets like ODIR are often small and imbalanced.
+    To address class imbalance and limited data, Squeeze-and-Excitation (SE), Multi-head Self Attention (MHA) and Conditional Variational Autoencoders (CVAE) for synthetic data augmentation were explored. 
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: "https://github.com/raphsa/Multi_retinal_disease_detection/blob/main/report.pdf"
+  repo_url: "https://github.com/raphsa/Multi_retinal_disease_detection"
+  tags:
+    - Python
+    - PyTorch
+    - Computer Vision
+    - Deep Learning
+    - Fine-tuning
+    - Transfer Learning
+    - ResNet18
+    - EfficientNet
+    - Squeeze-and-Excitation
+    - Multi-Head Self-Attention
+    - Weigheted Average Ensemble
+    - Conditional Variational Autoencoder
+
+- id: IOT_Proj
+  title: "A Dual-Purpose IoT System Using Raspberry Pi Pico W and BMP280: Design and Development of a Weather Station and a Thermal Comfort–Based HVAC Simulation"
+  description: |
+    Final project for the Internet of Things course @UniOulu.
+    An end-to-end IoT-based thermal comfort monitoring system was built around a Raspberry Pi Pico W and a BMP280 sensor for temperature and pressure acquisition.
+    The system collects environmental data using the BMP280 sensor connected to the Pico, streams it to InfluxDB through a cloud-based pipeline exploiting MQTT protocol (where HiveMQ was chosen as MQTT broker) and Node-RED, performs comfort prediction using a logistic regression model, and visualizes results in real time across dashboards in Grafana and a mobile application built with Flutter and Flask Rest API.
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: "https://github.com/raphsa/Raspberry-Pi-Pico-Indoor-Weather-Station/blob/main/IoT_report.pdf"
+  repo_url: "https://github.com/raphsa/Raspberry-Pi-Pico-Indoor-Weather-Station"
+  tags:
+    - Python
+    - Internet of Things
+    - Raspberry Pi Pico W
+    - BMP280
+    - MQTT
+    - REST API
+    - Flask
+    - HiveMQ
+    - Node-RED
+    - InfluxDB
+    - Grafana
+    - Flutter
+    - Logistic Regression
+    - Machine Learning
+
+- id: AffComp_Proj
+  title: "Facial Micro-expressions recognition and classification"
+  description: |
+    Final project for the Affective Computing course @UniOulu.
+    Developed different Deep Learning model architectures for the micro-expression recognition, considering different feature representations derived from the facial image sequences. In parallel, the best performer model was trained and the video processing and annotation pipeline was prepared. Project also considers recognition and classification of facial micro-expression action units (AUs) from the feature sequences as an auxiliary target for our models.
+    Facial micro-expressions are spontaneous, subtle, and rapid muscle movements (often <200ms), which can be used to discover the true feelings that humans may hide.
+    Developing reliable AU and micro expression recognition models is very challenging because the signals are brief, low-amplitude, noisy, and amount of training data is very limited. To tackle the problem of low-amplitude and noisy data, state-of-art image and signal analysis methods were used, like Eulerian Motion Magnification, Gunnar Farnebäck’s optical flow, with consequent computation of optical strains using Sobel kernels, Local Binary Patterns (LBPs), and block-wise 3D Fast Fourier Transform. 
+    Mainly three multitask deep architectures were trained and compared:
+    - 3D-CNN
+    - 2D-CNN image encoder with bidirectional LSTM
+    - Transformer
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: "https://github.com/raphsa/ME-based-emotion-classifier/blob/main/report/main.pdf"
+  repo_url: "https://github.com/raphsa/ME-based-emotion-classifier"
+  tags:
+    - Python
+    - PyTorch
+    - Computer Vision
+    - Transformer
+    - CNN
+    - LSTM
+    - Eulerian Motion Magnification
+    - Gunnar Farneback's optical flow
+    - Local Binary Patterns
+    - 3D Fast Fourier Transform
+    - Sobel kernels
+
+
+- id: VR_Proj
+  title: "Virtual Reality Escape Room for Google Cardboard in Unity"
+  description: |
+    Final project of the VR Systems course @UniOulu.
+    A Escape Room game was developed, based on head movement and gaze-based selection.
+    The game include different features:
+    - The player can teleport anywhere in the scene by twisting the head left or right by approximately 30°.
+    - Objects can be selected by gazing at them continuously for 2 seconds.
+    - Hint messages are spread throughout the environmental.
+    The goal of the game is to explore the environment, discover hints, interact with objects, and ultimately open the door to escape the room.
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: ""
+  repo_url: "https://github.com/raphsa/VR_EscapeRoom"
+  tags:
+    - C#
+    - Unity
+    - Virtual Reality
+    - Google Cardboard
+    - Escape Room
+
+- id: CDMO_proj
+  title: "Exploration of different Optimization Paradigms for the Sport Tournament Scheduling problem"
+  description: |
+    Final project for the Combinatorial Decision Making and Optimization course @UniBo.
+    An in-depth study of the Sport Tournament Scheduling (STS) problem was developed. STS was addressed within a unified framework that employs four optimization approaches: Constraint Programming (CP), Boolean Satisfiability (SAT), Satisfiability Modulo Theories (SMT) and Mixed Integer Programming (MIP).
+    The Circle Method was implemented for the initial schedule generation, reducing the time taken to find a solution.
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: "https://github.com/raphsa/TournamentScheduling_CDMO/blob/main/report/CDMO_report.pdf"
+  repo_url: "https://github.com/raphsa/TournamentScheduling_CDMO"
+  tags:
+    - Python
+    - MiniZinc
+    - AMPL
+    - Docker
+    - Constraint Programming
+    - Boolean Satisfiability
+    - Satisfiability Modulo Theories
+    - Mixed Integer Programming
+
+# - id: Tablut_proj
+#   title: ""
+#   description: ""
+#   status: done
+#   credits_url: ""
+#   dataset_url: ""
+#   report_url: ""
+#   repo_url: "https://github.com/raphsa/tablut_UniBOt"
+#   tags:
+#     - Python
+
+# - id: UniBo_motorsport
+#   title: ""
+#   description: ""
+#   status: done
+#   credits_url: ""
+#   dataset_url: ""
+#   report_url: ""
+#   repo_url: ""
+#   tags:
+#     - MatLab
+
+# - id: Mirabilandia_Proj
+#   title: ""
+#   description: ""
+#   status: done
+#   credits_url: ""
+#   dataset_url: ""
+#   report_url: ""
+#   repo_url: ""
+#   tags:
+#     - Python
+
+# - id: Telco_Proj
+#   title: ""
+#   description: ""
+#   status: done
+#   credits_url: ""
+#   dataset_url: ""
+#   report_url: ""
+#   repo_url: "https://github.com/raphsa/Telco_Customer_churn"
+#   tags:
+#     - Python
+
+#- id: NBA_salaries
+#  title: ""
+  # description: ""
+  # status: done
+  # credits_url: ""
+  # dataset_url: ""
+  # report_url: ""
+  # repo_url: ""
+  # tags:
+  #   - Python
+  #   - R
