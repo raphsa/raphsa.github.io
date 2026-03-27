@@ -167,7 +167,6 @@
     - 3D Fast Fourier Transform
     - Sobel kernels
 
-
 - id: VR_Proj
   title: "Virtual Reality Escape Room for Google Cardboard in Unity"
   description: |
@@ -211,16 +210,22 @@
     - Satisfiability Modulo Theories
     - Mixed Integer Programming
 
-# - id: Tablut_proj
-#   title: ""
-#   description: ""
-#   status: done
-#   credits_url: ""
-#   dataset_url: ""
-#   report_url: ""
-#   repo_url: "https://github.com/raphsa/tablut_UniBOt"
-#   tags:
-#     - Python
+- id: Tablut_proj
+  title: "DQN reinforcement learning agent for playing Tablut game"
+  description: |
+    Final project of the Fundamentals of AI an Knowledge Representation course @UniBo.
+    Developed a Deep Q Learning (DQN) Reinforcement Learning agent capable of playing the board game Tablut, learning optimal strategies through deep reinforcement learning and training on game simulations to improve decision-making and performance. 
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: ""
+  repo_url: "https://github.com/raphsa/tablut_UniBOt"
+  tags:
+    - Python
+    - Docker
+    - Reinforcement Learning
+    - DQN
+    - Tensorflow
 
 # - id: UniBo_motorsport
 #   title: ""
@@ -233,36 +238,75 @@
 #   tags:
 #     - MatLab
 
-# - id: Mirabilandia_Proj
-#   title: ""
-#   description: ""
-#   status: done
-#   credits_url: ""
-#   dataset_url: ""
-#   report_url: ""
-#   repo_url: ""
-#   tags:
-#     - Python
+- id: Mirabilandia_Proj
+  title: "Dynamic Path Optimization in Theme Parks: A Personalized A* Search Approach"
+  description: |
+    - Developed a model to optimize the sequence of attraction visits based on user interest and real-time efficiency.
+    - Built a personalized recommendation system that suggests attractions tailored to individual customer preferences and constraints.
+    These models were developed using a range of variables, including user demographics (age, height and location), personal preferences (extreme or easy attractions, wet or dry attractions, etc.), and real-time operational data (weather conditions, opening status of attractions, current queue time compared to average queue time and distances between attractions).
+    An A* search algorithm was developed using as heuristic the estimated remaining distance and expected waiting time for the attractions still to be visited.
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: ""
+  repo_url: ""
+  tags:
+    - Python
+    - A*
+    - Optimization
+    - Recommendation System
+    - Customer Experience
 
-# - id: Telco_Proj
-#   title: ""
-#   description: ""
-#   status: done
-#   credits_url: ""
-#   dataset_url: ""
-#   report_url: ""
-#   repo_url: "https://github.com/raphsa/Telco_Customer_churn"
-#   tags:
-#     - Python
+- id: NBA_salaries
+  title: "Machine Learning algorithms for salary prediction: the NBA-athletes case"
+  description: |
+    Thesis project for by bachelor's degree in Statistics @UniBo.
+    Developed a comprehensive study comparing machine learning models to predict NBA player salaries based on in-game statistics, biological characteristics, and court roles, while accounting for league-wide salary inflation across multiple seasons.
+    Architectures used:
+    - K-Nearest Neighbours (KNN)
+    - Random Forest
+    - Support Vector Machine (SVM)
+    - Gradient Boosting (XGBoost)
+    - Linear Regression
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: ""
+  repo_url: ""
+  tags:
+    - Python
+    - R
+    - Web Scraping
+    - Machine Learning
+    - XGBoost
+    - Random Forest
+    - SVM
+    - KNN
+    - Lasso
 
-#- id: NBA_salaries
-#  title: ""
-  # description: ""
-  # status: done
-  # credits_url: ""
-  # dataset_url: ""
-  # report_url: ""
-  # repo_url: ""
-  # tags:
-  #   - Python
-  #   - R
+- id: Telco_Proj
+  title: "Telco Customer Churn Prediction"
+  description: |
+    Developed multiple machine learning models to identify whether a customer in a telecommunication company will leave the service or not.
+    Models used:
+    - Logistic Regression
+    - Random Forest
+    - Support Vector Machine (SVM)
+    - K-Nearest Neighbours (KNN)
+    - Gradient Boosting (XGBoost)
+    - Adaptive Boosting (AdaBoost)
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: ""
+  repo_url: "https://github.com/raphsa/Telco_Customer_churn"
+  tags:
+    - Python
+    - Machine Learning
+    - Logistic Regression
+    - Random Forest
+    - SVM
+    - KNN
+    - XGBoost
+    - AdaBoost
+    
