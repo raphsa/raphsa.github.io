@@ -227,16 +227,28 @@
     - DQN
     - Tensorflow
 
-# - id: UniBo_motorsport
-#   title: ""
-#   description: ""
-#   status: done
-#   credits_url: ""
-#   dataset_url: ""
-#   report_url: ""
-#   repo_url: ""
-#   tags:
-#     - MatLab
+- id: UniBo_motorsport
+  title: "DDPG reinforcement learning agent for dynamic derating system in an electric motorbike"
+  description: |
+      Contributed to the development of a dynamic derating system for the motorbike of the University Motorsport team, to optimize the trade-off between peak performance and thermal safety during competitive racing.
+      Implemented a Deep Deterministic Policy Gradient (DDPG) agent in MATLAB using the Reinforcement Learning Toolbox, chosen for its superior handling of continuous action spaces and seamless integration with powertrain control logic.
+      Exploited a complex multi-physics environment modeling the aerodynamics, thermodynamics, and electrodynamics of the motorcycle to simulate real-world racing conditions.
+      Architected a custom LSTM-based Actor-Critic network to replace standard MLPs, successfully addressing partial observability in the environment and allowing the agent to leverage temporal dependencies for smoother policy transitions.
+      Engineered a sophisticated multi-objective reward function that balanced race-time minimization with thermal constraints, roll-angle stability, and position-based current management.
+      Improved powertrain reliability by dynamically adjusting the derating factor to prevent motor demagnetization without sacrificing competitive speed.
+  status: done
+  credits_url: ""
+  dataset_url: ""
+  report_url: ""
+  repo_url: ""
+  tags:
+    - MatLab
+    - Reinforcement Learning
+    - DDPG
+    - LSTM
+    - Motorsport
+    - Electric Vehicle
+
 
 - id: Mirabilandia_Proj
   title: "Dynamic Path Optimization in Theme Parks: A Personalized A* Search Approach"
