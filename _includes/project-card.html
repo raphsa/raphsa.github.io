@@ -1,0 +1,41 @@
+{% comment %}
+  Renders one project card (fixed-height preview) plus its hidden <template> with the
+  full content, which the modal JS clones in on click.
+  Params: project (data item), type ("wip" or "done")
+{% endcomment %}
+{% assign project = include.project %}
+{% assign type = include.type %}
+<div class="project-card" onclick="openProjectModal('{{ project.id }}')">
+  <div class="project-card-preview">
+    <h3 class="project-card-title">{{ project.title }}</h3>
+    <p class="project-description-preview" style="white-space: pre-line;">{{ project.description }}</p>
+  </div>
+  {% if project.tags %}
+  {% assign visible_tags = project.tags | slice: 0, 5 %}
+  {% assign hidden_count = project.tags.size | minus: 5 %}
+  <div class="project-tags">
+    {% for tag in visible_tags %}<span class="project-tag">{{ tag }}</span>{% endfor %}
+    {% if hidden_count > 0 %}<span class="project-tag project-tag-more">+{{ hidden_count }} more</span>{% endif %}
+  </div>
+  {% endif %}
+  <div class="project-footer">
+    <div class="project-buttons">
+      {% include project-links.html project=project type=type stop_propagation=true %}
+    </div>
+  </div>
+</div>
+
+<template id="modal-content-{{ project.id }}">
+  <h2>{{ project.title }}</h2>
+  <p class="project-description" style="white-space: pre-line;">{{ project.description }}</p>
+  {% if project.tags %}
+  <div class="project-tags">
+    {% for tag in project.tags %}<span class="project-tag">{{ tag }}</span>{% endfor %}
+  </div>
+  {% endif %}
+  <div class="project-footer">
+    <div class="project-buttons">
+      {% include project-links.html project=project type=type stop_propagation=false %}
+    </div>
+  </div>
+</template>

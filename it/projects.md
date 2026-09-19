@@ -44,12 +44,19 @@ permalink: /it/projects/
   }
 
   .projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    align-items: start;
+    gap: 1.1rem;
   }
 
+  /* Every card is the same fixed height, laid out as a column so the
+     buttons always sit flush at the bottom regardless of how much
+     text is above them — no more per-card size drift. */
   .project-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
     border-radius: 8px;
     padding: 1.1rem 1.25rem 1rem 1.25rem;
     cursor: pointer;
@@ -75,64 +82,36 @@ permalink: /it/projects/
     box-shadow: 0px 4px 14px rgba(0,0,0,0.5);
   }
 
-  .project-card h3 {
-    margin: 0 0 0.5rem 0;
+  /* Title + description share one fixed-height block, so every card is the
+     same size — but the title always renders in full (never truncated) and
+     takes whatever space it needs; the description just fills what's left,
+     down to nothing if a long title uses the whole block. */
+  .project-card-preview {
+    height: 9rem;
+    overflow: hidden;
+  }
+
+  .project-card-title {
+    margin: 0 0 0.4rem 0;
     font-size: 1.05rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     color: inherit;
   }
 
-  .project-toggle {
-    font-size: 0.75rem;
-    color: #888;
-    transition: transform 0.25s;
-    flex-shrink: 0;
-    margin-left: 0.75rem;
-  }
-
-  body.dark-theme .project-toggle { color: #aaa; }
-
-  .project-card.open .project-toggle {
-    transform: rotate(180deg);
-  }
-
-  .project-description-wrapper {
-    position: relative;
-    overflow: hidden;
-    max-height: 1.55em;
-    transition: max-height 0.35s ease;
-  }
-
-  .project-card.open .project-description-wrapper {
-    max-height: 600px;
-  }
-
-  .project-description {
+  /* Line-clamped to 4 as an upper bound for the common case (gives a clean "…"
+     instead of a hard cut mid-line); the parent's fixed height is what actually
+     enforces the title-takes-priority behavior when the title runs long. */
+  .project-description-preview {
     font-size: 0.92rem;
     line-height: 1.6;
     margin: 0;
     color: inherit;
     opacity: 0.85;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .project-fade {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 1.55em;
-    background: linear-gradient(to bottom, rgba(224,224,224,0) 0%, rgba(224,224,224,1) 100%);
-    pointer-events: none;
-    transition: opacity 0.25s;
-  }
-
-  body.dark-theme .project-fade {
-    background: linear-gradient(to bottom, rgba(34,40,50,0) 0%, rgba(34,40,50,1) 100%);
-  }
-
-  .project-card.open .project-fade { opacity: 0; }
-
-  /* Tags — always visible */
   .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -156,13 +135,27 @@ permalink: /it/projects/
     border-color: rgba(147, 197, 253, 0.25);
   }
 
+  .project-tag-more {
+    background-color: transparent;
+    color: inherit;
+    opacity: 0.65;
+    border-color: rgba(0,0,0,0.15);
+  }
+
+  body.dark-theme .project-tag-more {
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  /* Pushed to the bottom of the flex column, so it always lines up
+     across cards no matter how much text sits above it. */
   .project-footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.75rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
   }
 
   .project-buttons {
@@ -171,40 +164,7 @@ permalink: /it/projects/
     flex-wrap: wrap;
   }
 
-  /* All buttons — teal */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.38rem 0.9rem;
-    border-radius: 5px;
-    font-size: 0.84rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-    background-color: rgba(42, 157, 143, 0.15);
-    color: #1a7a6e;
-    border: 1.5px solid rgba(42, 157, 143, 0.4);
-  }
-
-  .btn:hover {
-    text-decoration: none;
-    background-color: #2a9d8f;
-    color: #fff !important;
-    border-color: #2a9d8f;
-  }
-
-  body.dark-theme .btn {
-    background-color: rgba(42, 157, 143, 0.18);
-    color: #5ecfc3;
-    border-color: rgba(94, 207, 195, 0.35);
-  }
-
-  body.dark-theme .btn:hover {
-    background-color: #2a9d8f;
-    color: #fff !important;
-    border-color: #2a9d8f;
-  }
+  /* .btn styles now live in _layouts/default.html so they can be reused site-wide */
 
   .divider {
     border: none;
@@ -214,6 +174,93 @@ permalink: /it/projects/
 
   body.dark-theme .divider {
     border-color: rgba(255,255,255,0.08);
+  }
+
+  /* Modal — opened on card click, sits on top of the page so the grid never reflows */
+  .project-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 1000;
+  }
+
+  .project-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .project-modal {
+    position: relative;
+    background-color: #E0E0E0;
+    color: #222832;
+    border-radius: 10px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 1.75rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    transform: translateY(12px);
+    transition: transform 0.25s ease;
+    text-align: left;
+  }
+
+  .project-modal-overlay.open .project-modal {
+    transform: translateY(0);
+  }
+
+  body.dark-theme .project-modal {
+    background-color: #222832;
+    color: #E0E0E0;
+  }
+
+  .project-modal-close {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    padding: 0.3rem;
+    line-height: 1;
+  }
+
+  .project-modal-close:hover {
+    opacity: 1;
+  }
+
+  .project-modal h2 {
+    margin: 0 0 0.9rem 0;
+    padding-right: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .project-modal .project-description {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    opacity: 0.9;
+    margin: 0 0 1.1rem 0;
+  }
+
+  .project-modal .project-tags {
+    margin-top: 0;
+    margin-bottom: 1.1rem;
+  }
+
+  .project-modal .project-footer {
+    margin-top: 0;
+    padding-top: 0;
+    justify-content: flex-start;
   }
 </style>
 
@@ -227,34 +274,7 @@ permalink: /it/projects/
   <h2><span class="section-dot wip"></span> In Corso</h2>
   <div class="projects-grid">
     {% for project in wip_projects %}
-    <div class="project-card" id="project-{{ project.id }}" onclick="toggleProject('{{ project.id }}')">
-      <h3>
-        {{ project.title }}
-        <span class="project-toggle">▼</span>
-      </h3>
-      <div class="project-description-wrapper">
-        <p class="project-description" style="white-space: pre-line;">{{ project.description }}</p>
-        <div class="project-fade"></div>
-      </div>
-      {% if project.tags %}
-      <div class="project-tags">
-        {% for tag in project.tags %}<span class="project-tag">{{ tag }}</span>{% endfor %}
-      </div>
-      {% endif %}
-      <div class="project-footer">
-        <div class="project-buttons">
-          {% if project.credits_url and project.credits_url != "" %}
-            <a class="btn" href="{{ project.credits_url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">📄 Credits</a>
-          {% endif %}
-          {% if project.repo_url and project.repo_url != "" %}
-            <a class="btn" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🐙 Repository</a>
-          {% endif %}
-          {% if project.dataset_url and project.dataset_url != "" %}
-            <a class="btn" href="{{ project.dataset_url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🗄️ Dataset</a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
+      {% include project-card.html project=project type="wip" %}
     {% endfor %}
   </div>
 </div>
@@ -266,39 +286,34 @@ permalink: /it/projects/
   <h2><span class="section-dot done"></span> Completati</h2>
   <div class="projects-grid">
     {% for project in done_projects %}
-    <div class="project-card" id="project-{{ project.id }}" onclick="toggleProject('{{ project.id }}')">
-      <h3>
-        {{ project.title }}
-        <span class="project-toggle">▼</span>
-      </h3>
-      <div class="project-description-wrapper">
-        <p class="project-description" style="white-space: pre-line;">{{ project.description }}</p>
-        <div class="project-fade"></div>
-      </div>
-      {% if project.tags %}
-      <div class="project-tags">
-        {% for tag in project.tags %}<span class="project-tag">{{ tag }}</span>{% endfor %}
-      </div>
-      {% endif %}
-      <div class="project-footer">
-        <div class="project-buttons">
-          {% if project.report_url and project.report_url != "" %}
-            <a class="btn" href="{{ project.report_url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">📄 Report</a>
-          {% endif %}
-          {% if project.repo_url and project.repo_url != "" %}
-            <a class="btn" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🐙 Repository</a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
+      {% include project-card.html project=project type="done" %}
     {% endfor %}
   </div>
 </div>
 {% endif %}
 
+<div class="project-modal-overlay" id="projectModalOverlay" onclick="closeProjectModal()">
+  <div class="project-modal" onclick="event.stopPropagation()">
+    <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Chiudi">✕</button>
+    <div id="projectModalBody"></div>
+  </div>
+</div>
+
 <script>
-  function toggleProject(id) {
-    const card = document.getElementById('project-' + id);
-    card.classList.toggle('open');
+  function openProjectModal(id) {
+    const tpl = document.getElementById('modal-content-' + id);
+    if (!tpl) return;
+    document.getElementById('projectModalBody').innerHTML = tpl.innerHTML;
+    document.getElementById('projectModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
+
+  function closeProjectModal() {
+    document.getElementById('projectModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeProjectModal();
+  });
 </script>

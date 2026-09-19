@@ -1,0 +1,22 @@
+{% comment %}
+  Renders the action buttons for a project card/modal.
+  Params: project (data item), type ("wip" or "done"), stop_propagation (bool, true when used inside a clickable card)
+{% endcomment %}
+{% if include.type == "wip" %}
+  {% if include.project.credits_url and include.project.credits_url != "" %}
+    <a class="btn" href="{{ include.project.credits_url }}" target="_blank" rel="noopener noreferrer"{% if include.stop_propagation %} onclick="event.stopPropagation()"{% endif %}>📄 Credits</a>
+  {% endif %}
+  {% if include.project.repo_url and include.project.repo_url != "" %}
+    <a class="btn" href="{{ include.project.repo_url }}" target="_blank" rel="noopener noreferrer"{% if include.stop_propagation %} onclick="event.stopPropagation()"{% endif %}>🐙 Repository</a>
+  {% endif %}
+  {% if include.project.dataset_url and include.project.dataset_url != "" %}
+    <a class="btn" href="{{ include.project.dataset_url }}" target="_blank" rel="noopener noreferrer"{% if include.stop_propagation %} onclick="event.stopPropagation()"{% endif %}>🗄️ Dataset</a>
+  {% endif %}
+{% else %}
+  {% if include.project.report_url and include.project.report_url != "" %}
+    <a class="btn" href="{{ include.project.report_url }}" target="_blank" rel="noopener noreferrer"{% if include.stop_propagation %} onclick="event.stopPropagation()"{% endif %}>📄 Report</a>
+  {% endif %}
+  {% if include.project.repo_url and include.project.repo_url != "" %}
+    <a class="btn" href="{{ include.project.repo_url }}" target="_blank" rel="noopener noreferrer"{% if include.stop_propagation %} onclick="event.stopPropagation()"{% endif %}>🐙 Repository</a>
+  {% endif %}
+{% endif %}

@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="{{ page.lang | default: 'it' }}">
 <head>
     <meta charset="UTF-8">
-    <title>{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+    <title>{{ page.title }} · {{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta property="og:title" content="{{ page.title }} · {{ site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ page.image | default: '/images/ProfilePic.JPG' | absolute_url }}">
+    <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -91,8 +97,43 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 60vh;
+            padding: 40px 0;
             text-align: center;
+        }
+
+        .hero-banner {
+            position: relative;
+            /* Bleeds past main's own 20px padding to sit flush under the navbar and span edge-to-edge.
+               (Deliberately not 100vw: that overshoots the real viewport width when a scrollbar is present,
+               leaving a gap on the right.) */
+            width: calc(100% + 40px);
+            margin: 0 -20px;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-fade {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(224,224,224,0) 0%, rgba(224,224,224,1) 100%);
+            pointer-events: none;
+        }
+
+        body.dark-theme .hero-fade {
+            background: linear-gradient(to bottom, rgba(20,24,30,0) 0%, rgba(20,24,30,1) 100%);
+        }
+
+        @media (max-width: 500px) {
+            .hero-banner { height: 130px; }
         }
 
         .profile-image-container {
@@ -107,12 +148,13 @@
             border-radius: 50%;
             border: 5px solid currentColor;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
             object-fit: cover;
         }
 
         .profile-image:hover {
             transform: translateY(-10px);
+            border-color: #9c5ffd;
         }
 
         .welcome-text h1, .welcome-text p {
@@ -129,7 +171,11 @@
             animation-delay: 1s;
         }
 
-        body.animate-page main > * {
+        /* Excludes .project-modal-overlay: its opacity is driven by the .open class (JS),
+           and this animation's forwards fill-mode would otherwise permanently lock it
+           at opacity:1 once it finishes, making the empty modal appear on page load and
+           never actually disappear when closed. */
+        body.animate-page main > *:not(.project-modal-overlay) {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 1s forwards;
@@ -155,8 +201,93 @@
             transition: color 0.3s;
         }
 
-        .social-icon:hover {
+        .social-icon.linkedin:hover {
             color: #0077b5;
+        }
+
+        .social-icon.github:hover {
+            color: #9c5ffd;
+        }
+
+        .social-icon.email:hover {
+            color: #9c5ffd;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.75;
+            margin-top: 0.3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.75rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.4s;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            background-color: rgba(42, 157, 143, 0.15);
+            color: #1a7a6e;
+            border: 1.5px solid rgba(42, 157, 143, 0.4);
+        }
+
+        .btn:hover {
+            text-decoration: none;
+            background-color: #2a9d8f;
+            color: #fff !important;
+            border-color: #2a9d8f;
+        }
+
+        body.dark-theme .btn {
+            background-color: rgba(42, 157, 143, 0.18);
+            color: #5ecfc3;
+            border-color: rgba(94, 207, 195, 0.35);
+        }
+
+        body.dark-theme .btn:hover {
+            background-color: #2a9d8f;
+            color: #fff !important;
+            border-color: #2a9d8f;
+        }
+
+        /* Homepage CTA buttons use the site's purple accent instead of the teal used on the Projects page */
+        .cta-buttons .btn {
+            background-color: rgba(156, 95, 253, 0.15);
+            color: #6d28d9;
+            border-color: rgba(156, 95, 253, 0.4);
+        }
+
+        .cta-buttons .btn:hover {
+            background-color: #9c5ffd;
+            color: #fff !important;
+            border-color: #9c5ffd;
+        }
+
+        body.dark-theme .cta-buttons .btn {
+            background-color: rgba(156, 95, 253, 0.18);
+            color: #c4b5fd;
+            border-color: rgba(196, 181, 253, 0.35);
+        }
+
+        body.dark-theme .cta-buttons .btn:hover {
+            background-color: #9c5ffd;
+            color: #fff !important;
+            border-color: #9c5ffd;
         }
 
         p a, li a {
@@ -271,7 +402,7 @@
                 </svg>
             </button>
             <button id="language-toggle" class="language-toggle-btn">
-                <img id="language-icon" src="{{ '/images/Flag_UK.svg' | relative_url }}" alt="Bandiera Inglese" width="24">
+                <img id="language-icon" src="{{ '/images/Flag_UK.svg' | relative_url }}" alt="Language toggle" width="24">
             </button>
         </div>
     </nav>
@@ -313,6 +444,7 @@
 
             let currentLang = window.location.pathname.includes("/en/") ? "en" : "it";
             languageIcon.src = currentLang === "it" ? "{{ '/images/Flag_UK.svg' | relative_url }}" : "{{ '/images/Flag_IT.svg' | relative_url }}";
+            languageIcon.alt = currentLang === "it" ? "Switch to English" : "Passa all'italiano";
 
             languageToggle.addEventListener("click", function () {
                 let newLang = currentLang === "it" ? "en" : "it";
